@@ -1,0 +1,8 @@
+.canvas-container{
+    display: none;
+    position: relative;
+}
+canvas{
+    width:100% !important;
+    height: 350px !important;
+}
