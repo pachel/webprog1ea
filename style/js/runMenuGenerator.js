@@ -38,4 +38,4 @@ var menupontok = [
 
 var menu = new MenuGenerator(menupontok);
 menu.run();
-menu.logo("fa-solid fa-graduation-cap");
+menu.logo("fa-brands fa-html5");

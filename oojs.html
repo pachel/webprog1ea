@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="vendor/twbs/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="vendor/components/font-awesome/css/all.css">
+    <link rel="stylesheet" href="style/main.css">
+    <script type="text/javascript" src="style/js/menu.js"></script>
+</head>
+<body>
+<section>
+    <nav class="navbar navbar-expand-lg bg-nav" data-bs-theme="dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="" id="logo"></i>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav"></ul>
+            </div>
+        </div>
+    </nav>
+    <article class="container mt-3 mb-3">
+        <!-- IDE KELL A TARTALOM -->
+        <h1>Objektumorientált javascript</h1>
+        A menü dinamikusabbá tételéhez egy javascript osztályt hoztam létre, ammi paraméterezhető módon generálja le a felső menüpotokat, linkjeit és szövegeit, a head részben a title szöveget, valamit az éppen aktuális menpontot aktívvá teszi!
+        <h2>menu.js</h2>
+        <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(240, 240, 240); color: rgb(68, 68, 68);"><span class="hljs-class"><span class="hljs-keyword" style="font-weight: 700;">class</span> <span class="hljs-title" style="color: rgb(136, 0, 0); font-weight: 700;">MenuAlap</span></span>{
+    menupontok;
+    <span class="hljs-keyword" style="font-weight: 700;">constructor</span>(mp) {
+        <span class="hljs-keyword" style="font-weight: 700;">this</span>.menupontok = mp;
+    }
+}
+<span class="hljs-class"><span class="hljs-keyword" style="font-weight: 700;">class</span> <span class="hljs-title" style="color: rgb(136, 0, 0); font-weight: 700;">MenuGenerator</span> <span class="hljs-keyword" style="font-weight: 700;">extends</span> <span class="hljs-title" style="color: rgb(136, 0, 0); font-weight: 700;">MenuAlap</span></span>{
+    template;
+    <span class="hljs-keyword" style="font-weight: 700;">constructor</span>(menupontokP) {
+        <span class="hljs-keyword" style="font-weight: 700;">super</span>(menupontokP);
+        <span class="hljs-keyword" style="font-weight: 700;">this</span>.template = $(<span class="hljs-string" style="color: rgb(136, 0, 0);">"#alap"</span>).clone();
+        <span class="hljs-keyword" style="font-weight: 700;">this</span>.template.css(<span class="hljs-string" style="color: rgb(136, 0, 0);">"visibility"</span>,<span class="hljs-string" style="color: rgb(136, 0, 0);">"visible"</span>);
+        <span class="hljs-keyword" style="font-weight: 700;">this</span>.template.removeAttr(<span class="hljs-string" style="color: rgb(136, 0, 0);">"id"</span>,<span class="hljs-string" style="color: rgb(136, 0, 0);">"none"</span>);
+    }
+    logo(fontawe){
+        <span class="hljs-keyword" style="font-weight: 700;">var</span> l = <span class="hljs-built_in" style="color: rgb(57, 115, 0);">document</span>.getElementById(<span class="hljs-string" style="color: rgb(136, 0, 0);">"logo"</span>);
+        l.className = fontawe;
+    }
+    run(){
+        <span class="hljs-keyword" style="font-weight: 700;">let</span> url = <span class="hljs-built_in" style="color: rgb(57, 115, 0);">document</span>.location.pathname;
+        <span class="hljs-keyword" style="font-weight: 700;">let</span> filename = url.substring(url.lastIndexOf(<span class="hljs-string" style="color: rgb(136, 0, 0);">'/'</span>)+<span class="hljs-number" style="color: rgb(136, 0, 0);">1</span>);
+        <span class="hljs-keyword" style="font-weight: 700;">if</span>(filename == <span class="hljs-string" style="color: rgb(136, 0, 0);">""</span>){
+            filename = <span class="hljs-string" style="color: rgb(136, 0, 0);">"index.html"</span>;
+        }
+        <span class="hljs-keyword" style="font-weight: 700;">let</span> nav = <span class="hljs-built_in" style="color: rgb(57, 115, 0);">document</span>.getElementById(<span class="hljs-string" style="color: rgb(136, 0, 0);">"nav"</span>);
+        <span class="hljs-keyword" style="font-weight: 700;">for</span>(<span class="hljs-keyword" style="font-weight: 700;">var</span> elem <span class="hljs-keyword" style="font-weight: 700;">in</span> <span class="hljs-keyword" style="font-weight: 700;">this</span>.menupontok){
+            <span class="hljs-keyword" style="font-weight: 700;">let</span> li = <span class="hljs-built_in" style="color: rgb(57, 115, 0);">document</span>.createElement(<span class="hljs-string" style="color: rgb(136, 0, 0);">"li"</span>);
+            <span class="hljs-keyword" style="font-weight: 700;">let</span> a = <span class="hljs-built_in" style="color: rgb(57, 115, 0);">document</span>.createElement(<span class="hljs-string" style="color: rgb(136, 0, 0);">"a"</span>);
+            li.className = <span class="hljs-string" style="color: rgb(136, 0, 0);">"nav-item"</span>;
+            a.className = <span class="hljs-string" style="color: rgb(136, 0, 0);">"nav-link"</span>;
+            <span class="hljs-keyword" style="font-weight: 700;">if</span>(<span class="hljs-keyword" style="font-weight: 700;">this</span>.menupontok[elem].link === filename){
+                a.className += <span class="hljs-string" style="color: rgb(136, 0, 0);">" active"</span>;
+                <span class="hljs-built_in" style="color: rgb(57, 115, 0);">document</span>.title =<span class="hljs-keyword" style="font-weight: 700;">this</span>.menupontok[elem].title;
+            }
+            a.innerText = <span class="hljs-keyword" style="font-weight: 700;">this</span>.menupontok[elem].szoveg;
+            a.href = <span class="hljs-keyword" style="font-weight: 700;">this</span>.menupontok[elem].link;
+            a.title = <span class="hljs-keyword" style="font-weight: 700;">this</span>.menupontok[elem].szoveg;
+            li.appendChild(a);
+            nav.appendChild(li);
+        }
+    }
+}</pre>
+        <h2>runMenuGenerator.js</h2>
+        <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(240, 240, 240); color: rgb(68, 68, 68);">var menupontok = [
+    {
+<span class="hljs-symbol" style="color: rgb(188, 96, 96);">        link:</span> <span class="hljs-string" style="color: rgb(136, 0, 0);">"index.html"</span>,
+<span class="hljs-symbol" style="color: rgb(188, 96, 96);">        szoveg:</span> <span class="hljs-string" style="color: rgb(136, 0, 0);">"Kezdőoldal"</span>,
+<span class="hljs-symbol" style="color: rgb(188, 96, 96);">        title:</span><span class="hljs-string" style="color: rgb(136, 0, 0);">"Kezdőoldal"</span>
+    },
+    {
+<span class="hljs-symbol" style="color: rgb(188, 96, 96);">        link:</span> <span class="hljs-string" style="color: rgb(136, 0, 0);">"tablazat.html"</span>,
+<span class="hljs-symbol" style="color: rgb(188, 96, 96);">        szoveg:</span> <span class="hljs-string" style="color: rgb(136, 0, 0);">"Táblázat"</span>,
+<span class="hljs-symbol" style="color: rgb(188, 96, 96);">        title:</span><span class="hljs-string" style="color: rgb(136, 0, 0);">"Kezdőoldal"</span>
+    },
+    {
+<span class="hljs-symbol" style="color: rgb(188, 96, 96);">        link:</span> <span class="hljs-string" style="color: rgb(136, 0, 0);">"html5.html"</span>,
+<span class="hljs-symbol" style="color: rgb(188, 96, 96);">        szoveg:</span> <span class="hljs-string" style="color: rgb(136, 0, 0);">"HTML5"</span>,
+<span class="hljs-symbol" style="color: rgb(188, 96, 96);">        title:</span><span class="hljs-string" style="color: rgb(136, 0, 0);">"Kezdőoldal"</span>
+    },
+    {
+<span class="hljs-symbol" style="color: rgb(188, 96, 96);">        link:</span> <span class="hljs-string" style="color: rgb(136, 0, 0);">"chartjs.html"</span>,
+<span class="hljs-symbol" style="color: rgb(188, 96, 96);">        szoveg:</span> <span class="hljs-string" style="color: rgb(136, 0, 0);">"ChartJS"</span>,
+<span class="hljs-symbol" style="color: rgb(188, 96, 96);">        title:</span><span class="hljs-string" style="color: rgb(136, 0, 0);">"Kezdőoldal"</span>
+    },
+    {
+<span class="hljs-symbol" style="color: rgb(188, 96, 96);">        link:</span> <span class="hljs-string" style="color: rgb(136, 0, 0);">"ajax.html"</span>,
+<span class="hljs-symbol" style="color: rgb(188, 96, 96);">        szoveg:</span> <span class="hljs-string" style="color: rgb(136, 0, 0);">"Ajax"</span>,
+<span class="hljs-symbol" style="color: rgb(188, 96, 96);">        title:</span><span class="hljs-string" style="color: rgb(136, 0, 0);">"Kezdőoldal"</span>
+    },
+    {
+<span class="hljs-symbol" style="color: rgb(188, 96, 96);">        link:</span> <span class="hljs-string" style="color: rgb(136, 0, 0);">"oojs.html"</span>,
+<span class="hljs-symbol" style="color: rgb(188, 96, 96);">        szoveg:</span> <span class="hljs-string" style="color: rgb(136, 0, 0);">"OOJS"</span>,
+<span class="hljs-symbol" style="color: rgb(188, 96, 96);">        title:</span><span class="hljs-string" style="color: rgb(136, 0, 0);">"Kezdőoldal"</span>
+    },
+    {
+<span class="hljs-symbol" style="color: rgb(188, 96, 96);">        link:</span> <span class="hljs-string" style="color: rgb(136, 0, 0);">"react.html"</span>,
+<span class="hljs-symbol" style="color: rgb(188, 96, 96);">        szoveg:</span> <span class="hljs-string" style="color: rgb(136, 0, 0);">"React"</span>,
+<span class="hljs-symbol" style="color: rgb(188, 96, 96);">        title:</span><span class="hljs-string" style="color: rgb(136, 0, 0);">"Kezdőoldal"</span>
+    }
+];
+
+var menu = new MenuGenerator(menupontok);
+menu.run();
+menu.logo(<span class="hljs-string" style="color: rgb(136, 0, 0);">"fa-solid fa-graduation-cap"</span>);</pre>
+    </article>
+</section>
+<footer class="container">
+    Készítők: Tóth László (P91Q2X), Reznik Sándor (HH8BTU) &copy;2025
+</footer>
+<script type="text/javascript" src="vendor/components/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="style/js/runMenuGenerator.js"></script>
+<script type="text/javascript" src="vendor/twbs/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>
