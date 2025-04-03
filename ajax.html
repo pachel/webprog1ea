@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX CRUD</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>AJAX CRUD</h2>
+
+        <!-- Adatok kiíratása -->
+        <div id="dataDisplay" class="mb-4"></div>
+
+        <!-- Statisztika -->
+        <div id="statistics" class="mb-4"></div>
+
+        <!-- Új adat hozzáadása -->
+        <h3>Új adat hozzáadása</h3>
+        <form id="createForm">
+            <div class="mb-2">
+                <input type="text" id="name" class="form-control" placeholder="Név" required maxlength="30">
+            </div>
+            <div class="mb-2">
+                <input type="number" id="height" class="form-control" placeholder="Magasság (cm)" required>
+            </div>
+            <button type="submit" class="btn btn-success">Hozzáadás</button>
+        </form>
+
+        <!-- Adat módosítása -->
+        <h3>Adat módosítása</h3>
+        <div class="mb-2">
+            <input type="number" id="updateId" class="form-control" placeholder="ID" required>
+            <button id="getDataForId" class="btn btn-primary mt-2">Adatok betöltése</button>
+        </div>
+        <form id="updateForm">
+            <div class="mb-2">
+                <input type="text" id="updateName" class="form-control" placeholder="Név" required maxlength="30">
+            </div>
+            <div class="mb-2">
+                <input type="number" id="updateHeight" class="form-control" placeholder="Magasság (cm)" required>
+            </div>
+            <button type="submit" class="btn btn-warning">Módosítás</button>
+        </form>
+
+        <!-- Adat törlése -->
+        <h3>Adat törlése</h3>
+        <div class="mb-2">
+            <input type="number" id="deleteId" class="form-control" placeholder="ID" required>
+            <button id="deleteData" class="btn btn-danger mt-2">Törlés</button>
+        </div>
+    </div>
+
+    <script src="ajax.js"></script>
+</body>
+</html>

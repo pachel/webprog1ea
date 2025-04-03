@@ -34,6 +34,7 @@ var menupontok = [
         szoveg: "React",
         title:"Kezdőoldal"
     }
+   
 ];
 
 var menu = new MenuGenerator(menupontok);

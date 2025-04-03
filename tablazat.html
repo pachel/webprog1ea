@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Táblázat</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>CRUD Táblázat</h2>
+        
+        <div class="mb-3">
+            <input type="text" id="search" class="form-control" placeholder="Keresés...">
+        </div>
+        
+        <table class="table table-bordered" id="dataTable">
+            <thead>
+                <tr>
+                    <th onclick="sortTable(0)">ID</th>
+                    <th onclick="sortTable(1)">Név</th>
+                    <th onclick="sortTable(2)">Életkor</th>
+                    <th onclick="sortTable(3)">Város</th>
+                    <th>Műveletek</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        
+        <h3>Új bejegyzés hozzáadása</h3>
+        <form id="addForm">
+            <div class="mb-2">
+                <input type="text" id="name" class="form-control" placeholder="Név" required minlength="3" maxlength="20">
+            </div>
+            <div class="mb-2">
+                <input type="number" id="age" class="form-control" placeholder="Életkor" required min="1" max="120">
+            </div>
+            <div class="mb-2">
+                <input type="text" id="city" class="form-control" placeholder="Város" required minlength="2">
+            </div>
+            <button type="submit" class="btn btn-success">Hozzáadás</button>
+        </form>
+    </div>
+
+    <script>
+        let data = [];
+
+        function refreshTable() {
+            let tbody = $("#dataTable tbody");
+            tbody.empty();
+            data.forEach((item, index) => {
+                tbody.append(`<tr>
+                    <td>${index + 1}</td>
+                    <td>${item.name}</td>
+                    <td>${item.age}</td>
+                    <td>${item.city}</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm" onclick="editRow(${index})">Szerkesztés</button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteRow(${index})">Törlés</button>
+                    </td>
+                </tr>`);
+            });
+        }
+
+        $("#addForm").on("submit", function(event) {
+            event.preventDefault();
+            let name = $("#name").val();
+            let age = $("#age").val();
+            let city = $("#city").val();
+            data.push({ name, age, city });
+            refreshTable();
+            this.reset();
+        });
+
+        function editRow(index) {
+            let item = data[index];
+            let newName = prompt("Új név:", item.name);
+            let newAge = prompt("Új életkor:", item.age);
+            let newCity = prompt("Új város:", item.city);
+            if (newName && newAge && newCity) {
+                data[index] = { name: newName, age: newAge, city: newCity };
+                refreshTable();
+            }
+        }
+
+        function deleteRow(index) {
+            if (confirm("Biztos törölni szeretné?")) {
+                data.splice(index, 1);
+                refreshTable();
+            }
+        }
+
+        function sortTable(column) {
+            data.sort((a, b) => {
+                let valA = Object.values(a)[column];
+                let valB = Object.values(b)[column];
+                return valA > valB ? 1 : -1;
+            });
+            refreshTable();
+        }
+
+        $("#search").on("input", function() {
+            let value = $(this).val().toLowerCase();
+            $("#dataTable tbody tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+    </script>
+</body>
+</html>
