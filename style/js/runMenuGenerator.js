@@ -5,12 +5,12 @@ var menupontok = [
         title:"Kezdőoldal"
     },
     {
-        link: "tablazat.html",
+        link: "crud.html",
         szoveg: "Táblázat",
         title:"Kezdőoldal"
     },
     {
-        link: "html5.html",
+        link: "html5_mod.html",
         szoveg: "HTML5",
         title:"Kezdőoldal"
     },
@@ -20,7 +20,7 @@ var menupontok = [
         title:"Kezdőoldal"
     },
     {
-        link: "ajax.html",
+        link: "ajax2.html",
         szoveg: "Ajax",
         title:"Kezdőoldal"
     },

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="vendor/twbs/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="vendor/components/font-awesome/css/all.css">
+    <link rel="stylesheet" href="style/main.css">
+    <script type="text/javascript" src="style/js/menu.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-nav" data-bs-theme="dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <i class="" id="logo"></i>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav"></ul>
+        </div>
+    </div>
+</nav>
+<article class="container mt-3 mb-3">
+    <!-- IDE KELL A TARTALOM -->
+    <h2>CRUD Táblázat</h2>
+
+    <div class="mb-3">
+        <input type="text" id="search" class="form-control" placeholder="Keresés...">
+    </div>
+
+    <table class="table table-bordered" id="dataTable">
+        <thead>
+        <tr>
+            <th onclick="sortTable(0)">ID</th>
+            <th onclick="sortTable(1)">Név</th>
+            <th onclick="sortTable(2)">Magasság</th>
+            <th onclick="sortTable(3)">Súly</th>
+            <th>Műveletek</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <h3>Új bejegyzés hozzáadása</h3>
+    <form id="editForm">
+        <div class="mb-2">
+            <input type="text" id="name" class="form-control" placeholder="Név" required minlength="3" maxlength="20">
+        </div>
+        <div class="mb-2">
+            <input type="number" id="height" class="form-control" placeholder="Magasság" required min="1" max="500">
+        </div>
+        <div class="mb-2">
+            <input type="text" id="weight" class="form-control" placeholder="Súly" required minlength="2">
+        </div>
+        <button type="button" class="btn btn-success" id="Add">Hozzáadás</button>
+    </form>
+    </div>
+</article>
+
+<footer class="container">
+    Készítők: Tóth László (P91Q2X), Reznik Sándor (HH8BTU) &copy;2025
+</footer>
+<script type="text/javascript" src="vendor/components/jquery/jquery.min.js"></script>
+<script src="style/js/ajax2.js"></script>
+<script type="text/javascript" src="style/js/runMenuGenerator.js"></script>
+<script type="text/javascript" src="vendor/twbs/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="vendor/twbs/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="vendor/components/font-awesome/css/all.css">
+    <link rel="stylesheet" href="style/main.css">
+    <script type="text/javascript" src="style/js/menu.js"></script>
+    <script type="text/javascript" src="vendor/components/jquery/jquery.js"></script>
+</head>
+<body>
+<section>
+    <nav class="navbar navbar-expand-lg bg-nav" data-bs-theme="dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="" id="logo"></i>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav"></ul>
+            </div>
+        </div>
+    </nav>
+    <article class="container mt-3 mb-3">
+        <!-- IDE KELL A TARTALOM -->
+        <h1>HTML5 API Példák</h1>
+        <nav>
+            <ul class="nav nav-tabs">
+                <li class="nav-item"><a class="nav-link active" href="#" data-target="#webStorage">Web Storage</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" data-target="#webWorkers">Web Workers</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" data-target="#serverSentEvents">Server-Sent Events</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" data-target="#geolocation">Geolocation API</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" data-target="#dragAndDrop">Drag and Drop</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" data-target="#canvas">Canvas</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" data-target="#svg">SVG</a></li>
+            </ul>
+        </nav>
+
+        <div id="examples">
+            <!-- Web Storage -->
+            <section id="webStorage" class="example-section">
+                <h2>Web Storage</h2>
+                <p>
+                    A Web Storage egy HTML5 API, amely lehetővé teszi, hogy az adatok a böngészőben tárolódjanak.
+                    Két típusa van: <strong>localStorage</strong> és <strong>sessionStorage</strong>.
+                </p>
+                <ul>
+                    <li><strong>localStorage</strong>: Az adatok tartósan tárolódnak, még a böngésző bezárása után is elérhetők.</li>
+                    <li><strong>sessionStorage</strong>: Az adatok csak az aktuális böngésző munkamenet során érhetők el, és a böngésző bezárásakor törlődnek.</li>
+                </ul>
+                <p>
+                    Az alábbi példában a <strong>localStorage</strong> használatával mentheted el az adatokat, és később betöltheted őket.
+                </p>
+                <input type="text" id="storageInput" placeholder="Írj be valamit">
+                <button id="saveStorage">Mentés</button>
+                <button id="loadStorage">Betöltés</button>
+                <p id="storageOutput"></p>
+            </section>
+
+            <!-- Server-Sent Events -->
+            <section id="serverSentEvents" class="example-section">
+                <h2>Server-Sent Events</h2>
+                <p id="sseOutput">Várakozás az eseményekre...</p>
+            </section>
+
+            <!-- Web Workers -->
+            <section id="webWorkers" class="example-section">
+                <h2>Web Workers</h2>
+                <p>
+                    A Web Workers egy HTML5 API, amely lehetővé teszi, hogy JavaScript kódot külön szálon futtassunk.
+                    Ez azt jelenti, hogy a hosszabb ideig tartó műveletek (például számítások) nem blokkolják a fő szálat,
+                    így a felhasználói felület továbbra is reszponzív marad.
+                </p>
+                <p>
+                    A Web Workers használatához létre kell hozni egy új worker objektumot, amely egy külön JavaScript fájlban található kódot futtat.
+                </p>
+                <p>
+                    Az alábbi példában egy egyszerű Web Worker-t indítunk, amely üzenetet küld vissza a fő szálnak.
+                </p>
+                <button id="startWorker">Worker indítása</button>
+                <p id="workerOutput"></p>
+            </section>
+
+            <!-- Geolocation -->
+            <section id="geolocation" class="example-section">
+                <h2>Geolocation API</h2>
+                <p>
+                    A Geolocation API lehetővé teszi, hogy a böngésző lekérje a felhasználó földrajzi helyzetét.
+                </p>
+                <button id="getLocation">Helyzet lekérése</button>
+                <p id="locationOutput">A helyzet adatai itt jelennek meg.</p>
+            </section>
+
+            <!-- Drag and Drop -->
+            <section id="dragAndDrop" class="example-section">
+                <h2>Drag and Drop</h2>
+                <p>
+                    Húzd az alábbi kék négyzetet a célterületre!
+                </p>
+                <div id="dragBox" draggable="true" style="width: 100px; height: 100px; background-color: blue; cursor: grab;"></div>
+                <div id="dropZone" style="width: 200px; height: 200px; border: 2px dashed black; margin-top: 20px; display: flex; align-items: center; justify-content: center;">
+                    Dobd ide!
+                </div>
+            </section>
+
+            <!-- Canvas -->
+            <section id="canvas" class="example-section">
+                <h2>Canvas</h2>
+                <p>
+                    Az alábbi példában egy zöld téglalapot rajzolunk a Canvas API segítségével.
+                </p>
+                <canvas id="myCanvas" width="400" height="200" style="border:1px solid #000;"></canvas>
+            </section>
+
+            <!-- SVG -->
+            <section id="svg" class="example-section">
+                <h2>SVG</h2>
+                <p>
+                    Az alábbi példában egy piros kör és egy zöld téglalap jelenik meg SVG segítségével.
+                </p>
+                <svg width="300" height="200" style="border:1px solid #000;">
+                    <!-- Piros kör -->
+                    <circle cx="100" cy="100" r="50" fill="red" />
+                    <!-- Zöld téglalap -->
+                    <rect x="150" y="50" width="100" height="100" fill="green" />
+                </svg>
+            </section>
+        </div>
+        </div>
+
+        <script src="html5.js"></script>
+    </article>
+</section>
+<footer class="container">
+    Készítők: Tóth László (P91Q2X), Reznik Sándor (HH8BTU) &copy;2025
+</footer>
+<script type="text/javascript" src="vendor/components/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="style/js/runMenuGenerator.js"></script>
+<script type="text/javascript" src="vendor/twbs/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>
