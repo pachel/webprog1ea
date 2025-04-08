@@ -37,6 +37,13 @@ var menupontok = [
    
 ];
 
+
+
 var menu = new MenuGenerator(menupontok);
 menu.run();
 menu.logo("fa-brands fa-html5");
+
+document.getElementById("nav").innerHTML = `
+    <li class="nav-item"><a class="nav-link" href="#" onclick="loadCalculator()">Számológép</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" onclick="loadTicTacToe()">Tic Tac Toe</a></li>
+`;
