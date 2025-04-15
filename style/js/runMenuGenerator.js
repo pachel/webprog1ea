@@ -7,32 +7,32 @@ var menupontok = [
     {
         link: "crud.html",
         szoveg: "Táblázat",
-        title:"Kezdőoldal"
+        title:"Crud"
     },
     {
         link: "html5_mod.html",
         szoveg: "HTML5",
-        title:"Kezdőoldal"
+        title:"HTML5 elemei"
     },
     {
         link: "chartjs.html",
         szoveg: "ChartJS",
-        title:"Kezdőoldal"
+        title:"ChartJS"
     },
     {
         link: "ajax2.html",
         szoveg: "Ajax",
-        title:"Kezdőoldal"
+        title:"Ajax"
     },
     {
         link: "oojs.html",
         szoveg: "OOJS",
-        title:"Kezdőoldal"
+        title:"Objektum Orientált JavaScript"
     },
     {
         link: "react.html",
         szoveg: "React",
-        title:"Kezdőoldal"
+        title:"React oldal"
     }
    
 ];
@@ -42,8 +42,8 @@ var menupontok = [
 var menu = new MenuGenerator(menupontok);
 menu.run();
 menu.logo("fa-brands fa-html5");
-
+/*
 document.getElementById("nav").innerHTML = `
     <li class="nav-item"><a class="nav-link" href="#" onclick="loadCalculator()">Számológép</a></li>
     <li class="nav-item"><a class="nav-link" href="#" onclick="loadTicTacToe()">Tic Tac Toe</a></li>
-`;
+`;*/
