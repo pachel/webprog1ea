@@ -1,20 +1,29 @@
-#alap{
+#alap {
     visibility: hidden;
 }
-.bg-nav{
+
+.bg-nav {
     background-color: #15205d;
 }
-footer{
+
+footer {
     font-size: 12px;
     text-align: center;
 
- 
-.highlight {
-    color: #ff5722; /* Narancssárga szín */
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Árnyék */
+
+    .highlight {
+        color: #ff5722; /* Narancssárga szín */
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Árnyék */
+    }
+
+    .example-section {
+        display: none;
+    }
 }
-.example-section {
-    display: none;
+h1{
+    text-align: center;
 }
+footer.container{
+    font-size: larger;
 }
